@@ -28,6 +28,7 @@ Rough plan for presentation:
 2. SumProduct
     - cf. discounted cashflows
     - caveat: haven't allowed for odd elements at the end
+    - take a guess (assume max 4 cores)
 3. BenchmarkDotNet
     - avoids common pitfalls
     - automates everything
