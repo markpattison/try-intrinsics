@@ -40,6 +40,8 @@ Rough plan for presentation:
 6. Intro to hardware intrinsics
     - basic idea/motivation
     - history
+    - caveat: `unsafe`
+    - caveat: haven't checked for compatibility
 7. Intrinsics results
     - SSE2
     - AVX
