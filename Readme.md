@@ -1,6 +1,6 @@
 On my home PC (Ryzen 7 3700X):
 
-.NET Framework 4.8
+**.NET Framework 4.8**
 
 | Method | Time |
 | ---- | ---: |
@@ -8,7 +8,7 @@ On my home PC (Ryzen 7 3700X):
 | AccumulateFor | 1,205 us |
 | ParallelFor | 318 us |
 
-.NET Core 3.1
+**.NET Core 3.1**
 
 | Method | Time |
 | --- | ---: |
@@ -52,5 +52,6 @@ Rough plan for presentation:
     - Linq can be very slow
     - simple for loop often good enough
     - not hard to parallelise
+    - .NET Core can make a big difference
     - very different results on different hardware
     - intrinsics for extreme cases
