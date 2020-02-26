@@ -51,4 +51,6 @@ Rough plan for presentation:
     - Linq can be very slow
     - simple for loop often good enough
     - not hard to parallelise
+    - .NET Core offers significant improvement
     - intrinsics for extreme cases
+    - repo link
