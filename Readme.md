@@ -13,11 +13,11 @@ On my home PC (Ryzen 7 3700X):
 | Method | Time |
 | --- | ---: |
 | WithLinq | 12,781 us |
-| AccumulateFor | 721 us |
-| ParallelFor | 208 us |
-| WithSse2 | 362 us |
-| WithAvx | 189 us |
-| ParallelAvx | 73 us |
+| AccumulateFor | 712 us |
+| ParallelFor | 197 us |
+| WithSse2 | 355 us |
+| WithAvx | 182 us |
+| ParallelAvx | 57 us |
 
 Rough plan for presentation:
 
