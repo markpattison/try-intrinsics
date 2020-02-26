@@ -2,22 +2,22 @@ On my home PC (Ryzen 7 3700X):
 
 **.NET Framework 4.8**
 
-| Method | Time |
-| ---- | ---: |
-| WithLinq | 11,385 us |
-| AccumulateFor | 1,205 us |
-| ParallelFor | 318 us |
+| Method | Time (Ryzen 7 3700X) | Time (i7-6500U) |
+| ---- | ---: | ---: |
+| WithLinq | 11,385 us | 16,064 us |
+| AccumulateFor | 1,205 us | 1,506 us |
+| ParallelFor | 318 us | 983 us |
 
 **.NET Core 3.1**
 
-| Method | Time |
-| --- | ---: |
-| WithLinq | 12,781 us |
-| AccumulateFor | 712 us |
-| ParallelFor | 197 us |
-| WithSse2 | 355 us |
-| WithAvx | 182 us |
-| ParallelAvx | 57 us |
+| Method | Time (Ryzen 7 3700X) | Time (i7-6500U) |
+| --- | ---: | ---: |
+| WithLinq | 12,781 us | 18,659 us |
+| AccumulateFor | 712 us | 1,518 us |
+| ParallelFor | 197 us | 996 us |
+| WithSse2 | 355 us | 1,129 us |
+| WithAvx | 182 us | 1,059 us |
+| ParallelAvx | 57 us | 986 us |
 
 Rough plan for presentation:
 
@@ -33,6 +33,7 @@ Rough plan for presentation:
 3. BenchmarkDotNet
     - avoids common pitfalls
     - automates everything
+    - use Release mode
 4. Start with .NET Framework
     - WithLinq
     - AccumulateFor
@@ -55,4 +56,5 @@ Rough plan for presentation:
     - .NET Core can make a big difference
     - very different results on different hardware
     - intrinsics for extreme cases
-    - repo link
+    - I need a new laptop
+    - (repo link)
