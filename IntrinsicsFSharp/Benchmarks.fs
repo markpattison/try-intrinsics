@@ -8,6 +8,8 @@ open System.Threading.Tasks
 open BenchmarkDotNet.Attributes
 open BenchmarkDotNet.Running
 
+#nowarn "9"
+
 type SumProductComparison () =
     
     [<DefaultValue>] val mutable Data1 : float[]
