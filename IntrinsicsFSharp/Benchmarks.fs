@@ -239,6 +239,25 @@ type SumProductComparison () =
 
 [<EntryPoint>]
 let Main _ =
+    let spc = SumProductComparison()
+    spc.InitialiseTestData()
+
+    // should be 96116568.8346
+
+    printfn "Map2: %.4f" (spc.Map2())
+    printfn "AccumulateIter: %.4f" (spc.AccumulateIter())
+    printfn "AccumulateFor: %.4f" (spc.AccumulateFor())
+    printfn "NaiveParallelFor: %.4f" (spc.NaiveParallelFor())
+    printfn "MiddlingParallelFor: %.4f" (spc.MiddlingParallelFor())
+    printfn "SmartParallelFor: %.4f" (spc.SmartParallelFor())
+    printfn "SSE2: %.4f" (spc.Sse2())
+    printfn "SSE2B: %.4f" (spc.Sse2B())
+    printfn "SSE3: %.4f" (spc.Sse3())
+    printfn "Avx: %.4f" (spc.Avx())
+    printfn "Avx2: %.4f" (spc.Avx2())
+    printfn "Fma: %.4f" (spc.Fma())
+    Console.ReadLine() |> ignore
+
     let summary = BenchmarkRunner.Run<SumProductComparison>()
     //printfn "%A" summary
     0
