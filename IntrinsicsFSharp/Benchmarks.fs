@@ -104,8 +104,8 @@ type SumProductComparison () =
         let mutable accV = Vector128<float>.Zero // holds two double-precision floats
         let mutable mulV = Vector128<float>.Zero
 
-        let lastIndex = n - (n / 2) - 2
-
+        let lastIndex = n - 2 - (n % 2)
+        
         for i in 0 .. 2 .. lastIndex do
             mulV <- Sse2.Multiply(Sse2.LoadVector128(NativeInterop.NativePtr.add d1 i), Sse2.LoadVector128(NativeInterop.NativePtr.add d2 i))
             accV <- Sse2.Add(accV, mulV)
@@ -113,7 +113,7 @@ type SumProductComparison () =
         let mutable acc = accV.GetElement(0) + accV.GetElement(1)
 
         // any remaining elements
-        for i in lastIndex + 1 .. n - 1 do
+        for i in lastIndex + 2 .. n - 1 do
             acc <- acc + this.Data1.[i] * this.Data2.[i]
 
         acc
@@ -128,7 +128,7 @@ type SumProductComparison () =
         let mutable accV = Vector128<float>.Zero // holds two double-precision floats
         let mutable mulV = Vector128<float>.Zero
 
-        let lastIndex = n - (n / 2) - 2
+        let lastIndex = n - 2 - (n % 2)
 
         for i in 0 .. 2 .. lastIndex do
             mulV <- Sse2.Multiply(Sse2.LoadVector128(NativeInterop.NativePtr.add d1 i), Sse2.LoadVector128(NativeInterop.NativePtr.add d2 i))
@@ -137,7 +137,7 @@ type SumProductComparison () =
         let mutable acc = accV.GetElement(0) + accV.GetElement(1)
 
         // any remaining elements
-        for i in lastIndex + 1 .. n - 1 do
+        for i in lastIndex + 2 .. n - 1 do
             acc <- acc + this.Data1.[i] * this.Data2.[i]
 
         acc
@@ -152,7 +152,7 @@ type SumProductComparison () =
         let mutable accV = Vector128<float>.Zero // holds two double-precision floats
         let mutable mulV = Vector128<float>.Zero
 
-        let lastIndex = n - (n / 2) - 2
+        let lastIndex = n - 2 - (n % 2)
 
         for i in 0 .. 2 .. lastIndex do
             mulV <- Sse3.Multiply(Sse3.LoadVector128(NativeInterop.NativePtr.add d1 i), Sse3.LoadVector128(NativeInterop.NativePtr.add d2 i))
@@ -161,7 +161,7 @@ type SumProductComparison () =
         let mutable acc = accV.GetElement(0) + accV.GetElement(1)
 
         // any remaining elements
-        for i in lastIndex + 1 .. n - 1 do
+        for i in lastIndex + 2 .. n - 1 do
             acc <- acc + this.Data1.[i] * this.Data2.[i]
 
         acc
@@ -176,7 +176,7 @@ type SumProductComparison () =
         let mutable accV = Vector256<float>.Zero // holds four double-precision floats
         let mutable mulV = Vector256<float>.Zero
 
-        let lastIndex = n - (n / 4) - 4
+        let lastIndex = n - 4 - (n % 4)
 
         for i in 0 .. 4 .. lastIndex do
             mulV <- Avx.Multiply(Avx.LoadVector256(NativeInterop.NativePtr.add d1 i), Avx.LoadVector256(NativeInterop.NativePtr.add d2 i))
@@ -185,7 +185,7 @@ type SumProductComparison () =
         let mutable acc = accV.GetElement(0) + accV.GetElement(1) + accV.GetElement(2) + accV.GetElement(3)
 
         // any remaining elements
-        for i in lastIndex + 1 .. n - 1 do
+        for i in lastIndex + 4 .. n - 1 do
             acc <- acc + this.Data1.[i] * this.Data2.[i]
 
         acc
@@ -200,7 +200,7 @@ type SumProductComparison () =
         let mutable accV = Vector256<float>.Zero // holds four double-precision floats
         let mutable mulV = Vector256<float>.Zero
 
-        let lastIndex = n - (n / 4) - 4
+        let lastIndex = n - 4 - (n % 4)
 
         for i in 0 .. 4 .. lastIndex do
             mulV <- Avx2.Multiply(Avx2.LoadVector256(NativeInterop.NativePtr.add d1 i), Avx2.LoadVector256(NativeInterop.NativePtr.add d2 i))
@@ -209,7 +209,7 @@ type SumProductComparison () =
         let mutable acc = accV.GetElement(0) + accV.GetElement(1) + accV.GetElement(2) + accV.GetElement(3)
 
         // any remaining elements
-        for i in lastIndex + 1 .. n - 1 do
+        for i in lastIndex + 4 .. n - 1 do
             acc <- acc + this.Data1.[i] * this.Data2.[i]
 
         acc
@@ -224,7 +224,7 @@ type SumProductComparison () =
         let mutable accV = Vector256<float>.Zero // holds four double-precision floats
         let mutable mulV = Vector256<float>.Zero
 
-        let lastIndex = n - (n / 4) - 4
+        let lastIndex = n - 4 - (n % 4)
 
         for i in 0 .. 4 .. lastIndex do
             accV <- Fma.MultiplyAdd(accV, Fma.LoadVector256(NativeInterop.NativePtr.add d1 i), Fma.LoadVector256(NativeInterop.NativePtr.add d2 i))
@@ -232,7 +232,7 @@ type SumProductComparison () =
         let mutable acc = accV.GetElement(0) + accV.GetElement(1) + accV.GetElement(2) + accV.GetElement(3)
 
         // any remaining elements
-        for i in lastIndex + 1 .. n - 1 do
+        for i in lastIndex + 4 .. n - 1 do
             acc <- acc + this.Data1.[i] * this.Data2.[i]
 
         acc
