@@ -6,8 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="TestData.fs" />
-    <Compile Include="SumProduct.fs" />
     <Compile Include="Benchmarks.fs" />
   </ItemGroup>
 
