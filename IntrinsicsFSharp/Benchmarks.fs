@@ -229,7 +229,9 @@ type SumProductComparison () =
         let lastIndex = n - 4 - (n % 4)
 
         for i in 0 .. 4 .. lastIndex do
-            accV <- Fma.MultiplyAdd(accV, Fma.LoadVector256(NativeInterop.NativePtr.add d1 i), Fma.LoadVector256(NativeInterop.NativePtr.add d2 i))
+            let a = Fma.LoadVector256(NativeInterop.NativePtr.add d1 i)
+            let b = Fma.LoadVector256(NativeInterop.NativePtr.add d2 i)
+            accV <- Fma.MultiplyAdd(Fma.LoadVector256(NativeInterop.NativePtr.add d1 i), Fma.LoadVector256(NativeInterop.NativePtr.add d2 i), accV)
 
         let mutable acc = accV.GetElement(0) + accV.GetElement(1) + accV.GetElement(2) + accV.GetElement(3)
 
